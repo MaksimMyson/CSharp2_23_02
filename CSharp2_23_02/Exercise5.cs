@@ -1,14 +1,16 @@
-﻿namespace CSharp2_23_02
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSharp2_23_02
 {
-    internal class Program
+    public class Exercise5
     {
-        static void Main(string[] args)
+        public static int[,] GenerateArray(int size)
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-
-            Console.WriteLine("Двомірний масив:");
-            int[,] arr = new int[5, 5];
-
+            int[,] arr = new int[size, size];
             Random rand = new Random();
 
             for (int i = 0; i < arr.GetLength(0); i++)
@@ -16,12 +18,14 @@
                 for (int j = 0; j < arr.GetLength(1); j++)
                 {
                     arr[i, j] = rand.Next(1, 10);
-                    Console.Write(arr[i, j] + " ");
                 }
-                Console.WriteLine();
             }
-            
-            Console.WriteLine("Мінімальне значення масиву:");
+
+            return arr;
+        }   
+
+        public static int GetMin(int[,] arr)
+        {
             int min = arr[0, 0];
             for (int i = 0; i < arr.GetLength(0); i++)
             {
@@ -34,11 +38,12 @@
                 }
             }
 
-            Console.WriteLine(min);
+            return min;
+        }
 
-            Console.WriteLine("Максимальне значення масиву:");
+        public static int GetMax(int[,] arr)
+        {
             int max = arr[0, 0];
-
             for (int i = 0; i < arr.GetLength(0); i++)
             {
                 for (int j = 0; j < arr.GetLength(1); j++)
@@ -50,9 +55,7 @@
                 }
             }
 
-            Console.WriteLine(max);
-            
-
+            return max;
         }
     }
 }
